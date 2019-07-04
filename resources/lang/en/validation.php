@@ -145,6 +145,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'data.*' => 'frame',
+        'data.*.*' => 'score',
+    ],
 
 ];
