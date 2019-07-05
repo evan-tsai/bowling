@@ -1,4 +1,4 @@
-##Bowling Assignment
+## Bowling Assignment
 
 Run in console:
 ```bash
