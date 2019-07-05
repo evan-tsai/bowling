@@ -43,11 +43,16 @@ class BowlingCommand extends Command
         $frames = json_decode($this->ask('Please enter array of frames.'), true);
         try {
             $game = new Game($frames);
+            $game->play();
 
-            $this->info(json_encode($game->score()));
-        } catch (ValidationException $exception) {
-            foreach (Arr::flatten($exception->errors()) as $error) {
-                $this->error($error);
+            $this->info(json_encode($game->score));
+        } catch (\Exception $e) {
+            if ($e instanceof ValidationException) {
+                foreach (Arr::flatten($e->errors()) as $error) {
+                    $this->error($error);
+                }
+            } else {
+                $this->error($e->getMessage());
             }
         }
     }
